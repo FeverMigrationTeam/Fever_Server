@@ -1,0 +1,89 @@
+spring:
+  profiles:
+    active: tonydb
+server:
+  port: 8082
+
+---
+
+spring:
+  profiles:
+    group:
+      "tony": "tonydb, common"
+      "heather": "jindb,common"
+      "dev": "devdb,common"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "devdb"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://petcomes.cnccg3mescgh.ap-northeast-2.rds.amazonaws.com:3306/petcomes?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: petcomes
+    password: petcomes
+  jwt:
+    secret : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKaWhvQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNjM3OTQ5ODUwLCJleHAiOjE2Mzc5NTM0NTB9.9cxwL02Dy3IWhIXPULbY49Pe4vdlgnOqXpHnBeRNeuQ
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: 5e3755636ff2c2835946338bd7552ee3 # 카카오 디벨로퍼 REST API 키   클라이언트 ID
+            redirect-uri: http://localhost:8081/test/signin #"{baseUrl}/{action}/oauth2/code/{registrationId}" # http://localhost:8080/login/oauth2/code/kakao
+            client-authentication-method: POST
+            authorization-grant-type: authorization_code
+            scope: profile_nickname, profile_image, account_email
+            client-name: Kakao
+        provider:
+          kakao:
+            authorization_uri: https://kauth.kakao.com/oauth/authorize
+            token_uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user_name_attribute: id
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "jindb"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/testdb?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: Jin
+    password: Jin
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "tonydb"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/feverNew?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    password: gm040404@
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "common"
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        show_sql: true
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+
