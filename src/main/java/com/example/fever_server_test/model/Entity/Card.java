@@ -25,9 +25,9 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cardIdx;
 
-    private Long couponCouponIdx; // ** db에 왜래키로 등록되어 있음
-
-    private Long userUserIdx; // ** db에 왜래키로 등록되어 있음
+    @ManyToOne
+    @JoinColumn(name = "user_idx")
+    private Member memberList;
 
     private String couponHasCouponExpirationdate; // 사용 기한
 

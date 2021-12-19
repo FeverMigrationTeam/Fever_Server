@@ -19,8 +19,13 @@ import java.io.Serializable;
 public class Coupon implements Serializable { //
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long couponIdx;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long couponId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_idx")
+    private Member memberList;
+
 
 
 
