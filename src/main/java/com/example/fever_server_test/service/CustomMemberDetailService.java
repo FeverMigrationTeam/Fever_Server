@@ -41,9 +41,9 @@ public class CustomMemberDetailService implements UserDetailsService {
         return outhRepository.findById(userId);
     }
 
-    public void save(User user) {
-        if (user != null)
-            outhRepository.save(user);
+    public void save(Member member) {
+        if (member != null)
+            outhRepository.save(member);
     }
 }
 

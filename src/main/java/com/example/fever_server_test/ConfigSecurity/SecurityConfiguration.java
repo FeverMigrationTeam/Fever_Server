@@ -62,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                    .antMatchers(HttpMethod.GET, "/helloworld/**").permitAll() // hellowworld로 시작하는 GET요청 리소스는 누구나 접근가능
 //                .antMatchers(HttpMethod.GET, "/**").authenticated()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Request Header에 accesstoken 실어서 보내는 특별한 상황 허용 : Pre~~
-                .antMatchers(HttpMethod.POST,"/test/**").permitAll() // 로그인 혹은 회원가입에 사용되는 api 들은 허용 ( 해당 단계에서는 토큰을 발급 받을 수 없음 )
+                .antMatchers(HttpMethod.POST,"/sign/**").permitAll() // 로그인 혹은 회원가입에 사용되는 api 들은 허용 ( 해당 단계에서는 토큰을 발급 받을 수 없음 )
 //                .antMatchers(HttpMethod.PUT,"/**").permitAll()
 //                .antMatchers(HttpMethod.DELETE,"/**").permitAll()
                 .anyRequest().authenticated() // 그외 나머지 요청은 모두 인증된 회원만 접근 가능 ( 토큰 기반 )
