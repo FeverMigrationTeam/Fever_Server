@@ -1,7 +1,6 @@
 package com.example.fever_server_test.ConfigSecurity;
 
 
-import com.pet.comes.model.Entity.User;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -60,11 +59,5 @@ public class OAuthSocialAttributes {
                 .build();
     }
 
-    public User toEntity() {
-        User user = new User();
 
-
-        return user;
-
-    }
 }

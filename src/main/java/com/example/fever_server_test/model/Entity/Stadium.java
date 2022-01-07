@@ -23,23 +23,23 @@ public class Stadium {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stadiumId;
 
-    private String stadiumName;
+    private String stadiumName; // 구장 이름
 
-    private String stadiumAddress;
+    private String stadiumAddress; // 구장 주소
 
     @Column(name = "stadium_operating_hours")
-    private String operatingHours;
+    private String operatingHours; // 운영시간
 
-    private String stadiumNumber;
+    private String stadiumNumber; // 전화번호
 
-    private String stadiumLatitude;
+    private String stadiumLatitude; // 위도
 
-    private String stadiumLongtitude;
+    private String stadiumLongtitude; // 경도
 
     @Column(nullable = false, columnDefinition = "TINYINT", length = 1) // DBMS의 테이블과 매핑시 오류방지
-    private int stadiumTroubleState;
+    private int stadiumTroubleState; // 고장유무
 
-    private String stadiumQR;
+    private String stadiumQR; // QR 정보
 
     private String stadiumImg;
 

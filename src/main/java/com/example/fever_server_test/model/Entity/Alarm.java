@@ -19,15 +19,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class) // Auditing : 감시, 자동으로 시간을 매핑하여 DB 테이블에 넣어줌.
 @Table(name = "alram")
-public class Alarm { // pk 2개 일 때
+public class Alarm { // pk 2개일 때 설정해줘야됨.
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long alaramId;
+    private int alramIdx;
 
-    @ManyToOne
+    @Id
     @JoinColumn(name="user_idx")
-    private Member memberList;
+    private int alramUserIdx;
 
     private String alramTitle;
 
