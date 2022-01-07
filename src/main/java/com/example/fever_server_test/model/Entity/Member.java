@@ -17,19 +17,16 @@ import java.time.LocalDateTime;
 @Getter
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "user")
-public class Member {
+public class Member { // 나중에 Spring Security 관련해서 User 라는 객체를 사용할 일이 생기기 때문에 User라는 엔티티 명을 사용하지 않음.
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-
-    @Column(name = "coupon_coupon_idx")
-    private Long couponId;
+    private int userIdx;
 
     private String userName;
 
     @Column(name = "user_residentregistration_number")
-    private String userRegisterNum;
+    private String userRegiNum;
 
     private String userPhone;
 
@@ -38,6 +35,7 @@ public class Member {
 
     @LastModifiedDate
     private LocalDateTime userUpdateTime;
+
 
 
 

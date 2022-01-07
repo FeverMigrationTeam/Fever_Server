@@ -25,7 +25,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/sign/")
 public class SignController {
-
+/*
     private final CustomMemberDetailService customMemberDetailService;
 
     private final CommonEncoder passwordEncoder = new CommonEncoder();
@@ -130,5 +130,6 @@ public class SignController {
 
         return new ResponseEntity(NoDataResponse.response(status.EXPIRED_TOKEN, message.EXPIRED_TOKEN), HttpStatus.OK);
     }
-
+*/
 }
+

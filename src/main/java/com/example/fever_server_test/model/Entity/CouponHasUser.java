@@ -1,6 +1,5 @@
 package com.example.fever_server_test.model.Entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,25 +11,35 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Getter
+@Entity
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Coupon  { //
+public class CouponHasUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int couponId;
+    private int couponHasUserIdx;
 
-    private String couponType; // 종류
+    // 왜래키 : 매핑 필요함
+    private int couponCouponIdx;
+
+    // 왜래키 : 매핑 필요함
+    private int userUserIdx;
+
+    @Column(name = "coupon_has_coupon_expirationdate")
+    private String couponExpirationDate; // 쿠폰 사용기한
+
+    @Column(name = "coupon_has_user_isUsed",columnDefinition = "TINYINT",length = 1)
+    private int couponIsUsed; // 0 : 사용안함 , 1 : 사용함
 
     @CreatedDate
-    private LocalDateTime couponCreateTime;
+    private LocalDateTime couponHasUserCreateTime;
 
     @LastModifiedDate
-    private LocalDateTime couponUpdateTime;
+    private LocalDateTime couponHasUserUpdateTime;
 
 
 

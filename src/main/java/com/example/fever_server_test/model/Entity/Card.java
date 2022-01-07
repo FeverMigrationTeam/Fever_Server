@@ -23,22 +23,23 @@ public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cardIdx;
+    private int cardIdx;
 
+
+    // 왜래키 : Member <- Card 1 : N 단방향 매핑 ( 임시 )
     @ManyToOne
     @JoinColumn(name = "user_idx")
-    private Member memberList;
+    private Member member;
 
-    private String couponHasCouponExpirationdate; // 사용 기한
+    private String cardCompanyName; // 카트회사 이름
 
-    @Column(nullable = false, columnDefinition = "TINYINT", length = 1) // DBMS의 테이블과 매핑시 오류방지
-    private int couponHasUserIsUsed;
+    private String cardNumber; // 카드번호
 
     @CreatedDate
-    private LocalDateTime couponHasUserUpdateTime;
+    private LocalDateTime cardCreateTime;
 
     @LastModifiedDate
-    private LocalDateTime couponHasUserCreateTime;
+    private LocalDateTime cardUpdateTime;
 
 
 }
