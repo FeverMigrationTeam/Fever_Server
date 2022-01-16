@@ -1,15 +1,13 @@
 package com.example.fever_server_test.model.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,13 +19,8 @@ import java.time.LocalDateTime;
 @Table(name = "alram")
 public class Alarm { // pk 2개일 때 설정해줘야됨.
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int alramIdx;
-
-    @Id
-    @JoinColumn(name="user_idx")
-    private int alramUserIdx;
+    @EmbeddedId
+    private AlarmId alramIdx;
 
     private String alramTitle;
 

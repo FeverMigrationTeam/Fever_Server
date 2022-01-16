@@ -26,7 +26,7 @@ public class Card {
     private int cardIdx;
 
 
-    // 왜래키 : Member <- Card 1 : N 단방향 매핑 ( 임시 )
+    // 왜래키 : Card -> Member : 다대일 단방향 ( 임시 )
     @ManyToOne
     @JoinColumn(name = "user_idx")
     private Member member;
