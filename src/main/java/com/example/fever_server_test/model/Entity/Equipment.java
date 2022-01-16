@@ -23,8 +23,10 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int equipmentIdx;
 
-    // 왜래키 : 연관관계 매핑 필요함
-    private int equipmentStadiumIdx;
+    // 왜래키 : equipment -> Stadium : 다대일
+    @ManyToOne
+    @JoinColumn(name = "stadium_idx")
+    private Stadium stadium;
 
     private String equipmentQr;
 
