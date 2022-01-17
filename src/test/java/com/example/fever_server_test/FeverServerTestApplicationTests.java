@@ -8,6 +8,7 @@ class FeverServerTestApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
