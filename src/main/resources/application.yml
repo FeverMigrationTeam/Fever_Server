@@ -22,8 +22,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://petcomes.cnccg3mescgh.ap-northeast-2.rds.amazonaws.com:3306/petcomes?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
-    username: petcomes
-    password: petcomes
+    username: fever
+    password: fever
   jwt:
     secret : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKaWhvQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNjM3OTQ5ODUwLCJleHAiOjE2Mzc5NTM0NTB9.9cxwL02Dy3IWhIXPULbY49Pe4vdlgnOqXpHnBeRNeuQ
   security:
