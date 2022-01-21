@@ -37,6 +37,8 @@ public class Member { // 나중에 Spring Security 관련해서 User 라는 객�
     private LocalDateTime userUpdateTime;
 
 
-
-
+    /**
+     * 테스트용*/
+    public Member(int idx, String userName, String userPhone, LocalDateTime userCreateTime, LocalDateTime userUpdateTime) {
+    }
 }
