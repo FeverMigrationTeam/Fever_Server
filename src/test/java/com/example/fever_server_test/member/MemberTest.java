@@ -10,12 +10,13 @@ import java.time.LocalDateTime;
 
 public class MemberTest {
     LocalDateTime localDateTime = LocalDateTime.now();
+
     @Test
     @DisplayName("회원가입 테스트 성공")
     void join(){
         Member member = new Member(100, "삼선동손흥민", "01094460770", localDateTime, localDateTime);
 
-        Assertions.assertThat(member.getUserIdx()).isEqualTo();
+        Assertions.assertThat(member.getUserIdx()).isEqualTo(100);
     }
 
 }
