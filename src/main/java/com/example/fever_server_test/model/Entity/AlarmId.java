@@ -9,7 +9,6 @@ import java.io.Serializable;
 // Alarm 엔티티 복합키 관련 설정
 @Setter
 @Getter
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable  // 복합키 매핑시
