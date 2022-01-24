@@ -1,29 +1,24 @@
 package com.example.fever_server_test.model.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user_has_alram")
-@IdClass(UserHasAlarmId.class)
-public class UserHasAlarm {
+@Embeddable
+@Data
+public class UserHasAlarmId implements Serializable {
+//    @JoinColumn(referencedColumnName = "id", name = "dog_id")
 
-
-    @Id
     @OneToOne
-//    @JoinColumn(referencedColumnName = "userIdx",name = "user_user_idx")
+//    @JoinColumn(referencedColumnName = "userIdx",name = "user_user_idx") // referencedColumnName : db table이 아닌 Entity 상의 칼럼 이름
     @JoinColumn(name = "user_idx")
     private Member userUserIdx;
 
-    @Id
     @OneToOne
 //    @JoinColumn(referencedColumnName = "alarmIdx",name = "alram_alram_idx")
     @JoinColumn(name = "alram_idx")

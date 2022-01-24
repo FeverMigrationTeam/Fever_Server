@@ -13,15 +13,17 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Embeddable  // 복합키 매핑시
 @Data // equals, hashCode 오버라이드
-public class AlarmId implements Serializable {
+public class AlarmId implements Serializable { // 복합키를 가지고 있는 식별자 클래스 AlarmId
 
     @Column(name = "alram_idx")
-    private int alramIdx;
+    private int alarmIdx;
 
 //    @Column(name = "alram_user_idx")
-    @ManyToOne  // Alarm -> User 다대일 단방향
-    @JoinColumn(name="user_idx") // user 엔티티의 테이블상 id 이름
-    private Member member;
+//    @ManyToOne  // Alarm -> User 다대일 단방향
+//    @JoinColumn(name="user_idx") // user 엔티티의 테이블상 id 이름
+
+    @Column(name = "alram_user_idx")
+    private int alarmUserIdx;
 
 
 

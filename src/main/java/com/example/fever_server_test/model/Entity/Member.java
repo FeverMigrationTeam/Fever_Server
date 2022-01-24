@@ -28,6 +28,7 @@ public class Member { // 나중에 Spring Security 관련해서 User 라는 객�
     @Column(name = "user_residentregistration_number")
     private String userRegiNum;
 
+    // Index ??
     private String userPhone;
 
     @CreatedDate

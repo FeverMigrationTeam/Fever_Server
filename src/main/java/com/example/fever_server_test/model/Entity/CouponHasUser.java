@@ -17,17 +17,25 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+@IdClass(CouponHasUserId.class) // 식별자 클래스인 CouponHasUserId를 매핑
 public class CouponHasUser {
 
+//    @EmbeddedId
+//    private CouponHasUserId couponHasUserId;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "coupon_has_user_idx")
     private int couponHasUserIdx;
 
-    // 왜래키 : 매핑 필요함
-    private int couponCouponIdx;
+    @Id
+    @OneToOne
+    @JoinColumn(name = "coupon_idx")
+    private Coupon couponCouponIdx;
 
-    // 왜래키 : 매핑 필요함
-    private int userUserIdx;
+    @Id
+    @OneToOne
+    @JoinColumn(name = "user_idx")
+    private Member userUserIdx;
 
     @Column(name = "coupon_has_coupon_expirationdate")
     private String couponExpirationDate; // 쿠폰 사용기한
