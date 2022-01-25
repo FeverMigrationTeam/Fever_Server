@@ -16,12 +16,11 @@ public class UserHasAlarmId implements Serializable {
 
     @OneToOne
 //    @JoinColumn(referencedColumnName = "userIdx",name = "user_user_idx") // referencedColumnName : db table이 아닌 Entity 상의 칼럼 이름
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_user_idx", referencedColumnName = "user_idx")
     private Member userUserIdx;
 
     @OneToOne
 //    @JoinColumn(referencedColumnName = "alarmIdx",name = "alram_alram_idx")
-    @JoinColumn(name = "alram_idx")
     private Alarm alarmIdx;
 
 }

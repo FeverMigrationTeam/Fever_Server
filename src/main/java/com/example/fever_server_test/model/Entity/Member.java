@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 public class Member { // 나중에 Spring Security 관련해서 User 라는 객체를 사용할 일이 생기기 때문에 User라는 엔티티 명을 사용하지 않음.
 
     @Id
+    @Column(name = "user_idx") // PK에는 되도록이면 @Column 어노테이션 달아주기 -> 매핑이 잘안되는경우가 있음.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userIdx;
 

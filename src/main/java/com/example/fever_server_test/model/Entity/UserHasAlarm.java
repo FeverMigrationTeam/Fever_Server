@@ -20,13 +20,12 @@ public class UserHasAlarm {
     @Id
     @OneToOne
 //    @JoinColumn(referencedColumnName = "userIdx",name = "user_user_idx")
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_user_idx", referencedColumnName = "user_idx")
     private Member userUserIdx;
 
     @Id
     @OneToOne
-//    @JoinColumn(referencedColumnName = "alarmIdx",name = "alram_alram_idx")
-    @JoinColumn(name = "alram_idx")
+    @JoinColumn(name = "alram_alram_idx",referencedColumnName = "alram_idx")//
     private Alarm alarmIdx;
 
 }
