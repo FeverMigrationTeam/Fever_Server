@@ -22,8 +22,12 @@ public class AlarmId implements Serializable { // 복합키를 가지고 있는 
 //    @ManyToOne  // Alarm -> User 다대일 단방향
 //    @JoinColumn(name="user_idx") // user 엔티티의 테이블상 id 이름
 
-    @Column(name = "alram_user_idx")
-    private int alarmUserIdx;
+    @ManyToOne
+    @JoinColumn(name = "alram_user_idx",referencedColumnName = "user_idx")
+    private Member member;
+
+//    @Column(name = "alram_user_idx")
+//    private int alarmUserIdx;
 
 
 
