@@ -25,8 +25,10 @@ public class Alarm { // pk 2개일 때 설정해줘야됨.
     private int alarmIdx;
 
     @Id
-    @Column(name = "alram_user_idx")
-    private int alarmUserIdx;
+//    @Column(name = "alram_user_idx")
+    @ManyToOne
+    @JoinColumn(name = "alram_user_idx",referencedColumnName = "user_idx")
+    private Member member;
 
     private String alramTitle;
 
