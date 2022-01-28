@@ -13,4 +13,5 @@ public class MemberService {
     private final ResponseMessage message;
     private final MemberRepository memberRepository;
 
+
 }
