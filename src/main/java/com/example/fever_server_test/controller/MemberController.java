@@ -13,13 +13,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    /**
-     * 사용자로부터 SNS 로그인 요청을 Social Login Type 을 받아 처리
-     * @param socialLoginType (GOOGLE, NAVER, KAKAO)
-     **/
-    @RequestMapping(value = "/login/ouath/kakao")
-    public ResponseEntity getKakoOuthUrl(@RequestMapping){
 
-    }
+
 
 }
