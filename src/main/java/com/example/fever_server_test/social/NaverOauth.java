@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class NaverOauth implements SocialOauth{
-    @Value("${sns.naver.client.id}")
+//    @Value("${sns.naver.client.id}")
     private String NAVER_SNS_CLIENT_ID;
-    @Value("${sns.naver.client.secret}")
+//    @Value("${sns.naver.client.secret}")
     private String NAVER_SNS_CLIENT_SECRET;
-    @Value("${sns.naver.callback.url}")
+//    @Value("${sns.naver.callback.url}")
     private String NAVER_SNS_CALLBACK_URL;
     private String NAVER_SNS_BASE_URL = "https://nid.naver.com/oauth2.0/authorize";
     private String NAVER_SNS_TOKEN_BASE_URL = "https://nid.naver.com/oauth2.0/token";

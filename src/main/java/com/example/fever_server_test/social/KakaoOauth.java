@@ -47,13 +47,14 @@ public class KakaoOauth implements SocialOauth {
     public String requestAccessToken(String code) {
         RestTemplate restTemplate = new RestTemplate(); // Spring HTTP 통신 템플릿, HTTP 요청 후 JSON, String .. 과 같은 응답을 받을 수 있는 템플릿 -> 주로 외부 api를 호출할 때 사용함.
 
+        // --- Body ---
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>(); // Query string을 사용하는 경우 multivalueMap 사용
-        params.add("grant_type", "authorization_code");
-        params.add("client_id", KAKAO_SNS_CLIENT_ID);
-        params.add("redirect_uri", KAKAO_SNS_CALLBACK_URL);
-        params.add("code", code);
-        params.add("client_secret", KAKAO_SNS_CLIENT_SECRET);
+        params.add("grant_type", "authorization_code"); // 고정 값
+        params.add("client_id", KAKAO_SNS_CLIENT_ID); // 앱 REST API 키
+        params.add("redirect_uri", KAKAO_SNS_CALLBACK_URL); // 인가코드가 redirected된 uri
+        params.add("code", code); // 인가코드 받기 요청으로 얻은 인가코드
 
+        // --- Heather ---
         //HttpHeader 오브젝트 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8"); // 고정
