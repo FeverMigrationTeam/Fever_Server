@@ -44,7 +44,7 @@ public class OauthController {
      * @param code API Server 로부터 넘어오는 code
      * @return SNS Login 요청 결과로 받은 Json 형태의 String 문자열 (access_token, refresh_token 등)
      **/
-    @GetMapping(value = "{socialLoginType}/callback")
+    @GetMapping(value = "/{socialLoginType}/callback")
     public String callback(
             @PathVariable(name = "socialLoginType") SocialLoginType socialLoginType,
             @RequestParam(name = "code") String code ){
