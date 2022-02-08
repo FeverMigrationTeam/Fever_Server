@@ -18,6 +18,12 @@ public class OauthController {
     @Autowired
     private  OauthService oauthService;
 
+    @ResponseBody
+    @GetMapping("kakao")
+    public void kakaoCallback(@RequestParam String code){
+        System.out.println(code);
+    }
+
     @GetMapping("/test")
     public void testMethod(){
         System.out.println("test khkhkhk");

@@ -2,6 +2,7 @@ spring:
   profiles:
     include:
       - aws
+      - credentials
     active: devdb
   servlet:
     multipart:
@@ -26,6 +27,11 @@ spring:
   config:
     activate:
       on-profile: "devdb"
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true   # sql문 로그 찍어주기
+        format_sql: true # 로그 좀 이쁘게 찍어주기
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://feverdb.cy76xlw8fwhe.ap-northeast-2.rds.amazonaws.com:3306/playcanival?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
@@ -37,7 +43,7 @@ spring:
         registration:
           kakao:
             client-id: f5c10aa7e91298cd339126823d81edc9 # 카카오 디벨로퍼 REST API 키   클라이언트 ID
-            redirect-uri: http://localhost:8080/oauth/kakao/callback #"{baseUrl}/{action}/oauth2/code/{registrationId}" # http://localhost:8080/login/oauth2/code/kakao
+            redirect-uri: http://localhost:8080/oauth/kakao #"{baseUrl}/{action}/oauth2/code/{registrationId}" # http://localhost:8080/login/oauth2/code/kakao
             client-authentication-method: POST
             authorization-grant-type: authorization_code
             scope: profile_nickname, profile_image, account_email

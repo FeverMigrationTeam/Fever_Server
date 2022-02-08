@@ -24,13 +24,13 @@ public class Member { // 나중에 Spring Security 관련해서 User 라는 객�
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userIdx;
 
+    @Column(name = "user_kakao_id")
+    private int userKakaoIdx;
+
     private String userName;
 
     @Column(name = "user_residentregistration_number")
     private String userRegiNum;
-
-    // Index ??
-    private String userPhone;
 
     @CreatedDate
     private LocalDateTime userCreateTime;
