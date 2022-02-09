@@ -25,7 +25,7 @@ public class Member { // 나중에 Spring Security 관련해서 User 라는 객�
     private int userIdx;
 
     @Column(name = "user_kakao_id")
-    private int userKakaoIdx;
+    private String userKakaoIdx;
 
     private String userName;
 
