@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
 public class KakaoOauth implements SocialOauth {
 
     //    @Value("${sns.kakao.client.id}")
-    private String KAKAO_SNS_CLIENT_ID = "f5c10aa7e91298cd339126823d81edc9";
+    private String KAKAO_SNS_CLIENT_ID = "bfde5086fc94e9b3c624fa64c5fb1afb";
     //    @Value("${sns.kakao.client.secret}")
 //    private String KAKAO_SNS_CLIENT_SECRET;
 //    @Value("${sns.kakao.callback.url}")
-    private String KAKAO_SNS_CALLBACK_URL = "http://localhost:8080/auth/kakao/callback";
+    private String KAKAO_SNS_CALLBACK_URL = "http://localhost:8080/oauth/KAKAO/callback";
     private String KAKAO_SNS_BASE_URL = "https://kauth.kakao.com/oauth/authorize";
     private String KAKAO_SNS_TOKEN_BASE_URL = "https://kauth.kakao.com/oauth/token";
 
