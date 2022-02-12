@@ -13,7 +13,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-
+    // selectUser : 기존의 파라미터 user_phone 이므로 아직 작성 x
 
 
 }

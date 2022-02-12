@@ -13,7 +13,6 @@ public class Status {
      */
 
     public int SUCCESS = 200;
-
     public int DUPLICATED_EMAIL = 301;
     public int NOT_ENTERED = 302;
     public int DUPLICATED_NICKNAME = 303;
