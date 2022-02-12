@@ -17,13 +17,13 @@ public class StadiumController {
 
     private final StadiumService stadiumService;
 
-    /* 모든 구장검색 : selectStadium */
+    /* 모든 구장검색 : selectStadium --Tony */
     @GetMapping()
     public ResponseEntity selectStadium(){
         return stadiumService.selectStadium();
     }
 
-    /* 구장 검색 : searchStadium */
+    /* 구장 검색 : searchStadium --Tony */
     @GetMapping("/{stadiumName}")
     public ResponseEntity searchStadium(@PathVariable String stadiumName){
         return stadiumService.searchStadium(stadiumName);
