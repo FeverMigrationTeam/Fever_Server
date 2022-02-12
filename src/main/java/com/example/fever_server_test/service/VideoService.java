@@ -13,4 +13,7 @@ public class VideoService {
     private final ResponseMessage message;
     private final VideoRepository videoRepository;
 
+    public String greet() {
+        return "Hello, World";
+    }
 }

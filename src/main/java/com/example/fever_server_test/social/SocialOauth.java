@@ -17,6 +17,8 @@ public interface SocialOauth {
      * */
     String requestAccessToken(String code);
 
+    String requestSocialData(String token);
+
     default SocialLoginType type(){
         if ( this instanceof GoogleOauth){
             return SocialLoginType.GOOGLE;

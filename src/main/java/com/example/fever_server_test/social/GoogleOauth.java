@@ -59,4 +59,9 @@ public class GoogleOauth implements SocialOauth {
         }
         return "구글 로그인 요청 처리 실패";
     }
+
+    @Override
+    public String requestSocialData(String token) {
+        return "";
+    }
 }
