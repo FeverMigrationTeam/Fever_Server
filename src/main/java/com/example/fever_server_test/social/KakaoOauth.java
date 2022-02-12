@@ -82,23 +82,23 @@ public class KakaoOauth implements SocialOauth {
 
     @Override
     public String requestSocialData(String token) {
-        String requestURL = KAKAO_SNS_USER_API_URL;
-        RestTemplate restTemplate = new RestTemplate(); // Spring HTTP 통신 템플릿, HTTP 요청 후 JSON, String .. 과 같은 응답을 받을 수 있는 템플릿 -> 주로 외부 api를 호출할 때 사용함.
-
-        //HttpHeader 오브젝트 생성
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8"); // 고정
-        headers.add("Authorization", "Bearer "+token);
-
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
-
-        ResponseEntity<String> response = restTemplate.exchange(
-                requestURL,
-                HttpMethod.GET,
-                request,
-                String.class
-        );
         try {
+            String requestURL = KAKAO_SNS_USER_API_URL;
+            RestTemplate restTemplate = new RestTemplate(); // Spring HTTP 통신 템플릿, HTTP 요청 후 JSON, String .. 과 같은 응답을 받을 수 있는 템플릿 -> 주로 외부 api를 호출할 때 사용함.
+
+            //HttpHeader 오브젝트 생성
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8"); // 고정
+            headers.add("Authorization", token);
+
+            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
+
+            ResponseEntity<String> response = restTemplate.exchange(
+                    requestURL,
+                    HttpMethod.GET,
+                    request,
+                    String.class
+            );
             if (response.getStatusCode() == HttpStatus.OK) {
                 return response.getBody(); // 각종 토큰과 만료시간 return
             }
