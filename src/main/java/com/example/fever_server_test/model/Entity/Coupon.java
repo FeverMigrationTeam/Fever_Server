@@ -22,15 +22,15 @@ public class Coupon  { //
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int couponId;
+    private Long couponIdx;
 
     private String couponType; // 종류
 
     @CreatedDate
-    private LocalDateTime couponCreateTime;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime couponUpdateTime;
+    private LocalDateTime modifiedAt;
 
 
 

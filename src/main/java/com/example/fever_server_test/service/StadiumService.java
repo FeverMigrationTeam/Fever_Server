@@ -46,14 +46,17 @@ public class StadiumService {
 
     /* 구장 검색 : searchStadium */
     public ResponseEntity searchStadium(String stadiumName) {
-        Optional<StadiumRepDto> stadiumRepDto = stadiumRepository.findByStadiumName(stadiumName)
-                .map(stadium -> modelMapper.map(stadium, StadiumRepDto.class));
 
-        if (!stadiumRepDto.isPresent()) // DB에 구장정보 x
+        List<StadiumRepDto> stadiumRepDtoList = stadiumRepository.findByStadiumNameContaining(stadiumName)
+                .stream()
+                .map(stadium -> modelMapper.map(stadium, StadiumRepDto.class))
+                .collect(Collectors.toList());
+
+        if (stadiumRepDtoList.isEmpty()) // DB에 구장정보 x
             return new ResponseEntity(NoDataResponse.response(status.DB_NO_DATA, message.DB_NO_DATA), HttpStatus.OK);
 
         return new ResponseEntity(DataResponse.response(status.SUCCESS,
-                message.SUCCESS_SEARCH_STADIUM, stadiumRepDto), HttpStatus.OK);
+                message.SUCCESS_SEARCH_STADIUM, stadiumRepDtoList), HttpStatus.OK);
 
     }
 }
