@@ -1,4 +1,4 @@
-package com.example.fever_server_test.controller;
+package com.example.fever_server_test.controller.stadium;
 
 
 import com.example.fever_server_test.service.StadiumService;
