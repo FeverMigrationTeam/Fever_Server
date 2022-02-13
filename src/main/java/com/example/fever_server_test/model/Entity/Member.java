@@ -22,21 +22,20 @@ public class Member { // 나중에 Spring Security 관련해서 User 라는 객�
     @Id
     @Column(name = "user_idx") // PK에는 되도록이면 @Column 어노테이션 달아주기 -> 매핑이 잘안되는경우가 있음.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userIdx;
-
-    @Column(name = "user_kakao_id")
-    private int userKakaoIdx;
+    private Long userIdx;
 
     private String userName;
 
-    @Column(name = "user_residentregistration_number")
-    private String userRegiNum;
+    private String userPhone;
 
     @CreatedDate
-    private LocalDateTime userCreateTime;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime userUpdateTime;
+    private LocalDateTime modifiedAt;
+
+    @Column(name = "user_social_idx")
+    private Long userSocialIdx;
 
 
     /**

@@ -25,29 +25,29 @@ public class CouponHasUser {
 
     @Id
     @Column(name = "coupon_has_user_idx")
-    private int couponHasUserIdx;
+    private Long couponHasUserIdx;
 
     @Id
     @OneToOne
-    @JoinColumn(name = "coupon_idx")
+    @JoinColumn(name = "coupon_coupon_idx")
     private Coupon couponCouponIdx;
 
     @Id
-    @OneToOne
-    @JoinColumn(name = "user_idx")
+    @ManyToOne
+    @JoinColumn(name = "user_user_idx")
     private Member userUserIdx;
 
     @Column(name = "coupon_has_coupon_expirationdate")
     private String couponExpirationDate; // 쿠폰 사용기한
 
-    @Column(name = "coupon_has_user_isUsed",columnDefinition = "TINYINT",length = 1)
-    private int couponIsUsed; // 0 : 사용안함 , 1 : 사용함
+    @Column(name = "coupon_used",columnDefinition = "TINYINT",length = 1)
+    private int couponUsed; // 0 : 사용안함 , 1 : 사용함
 
     @CreatedDate
-    private LocalDateTime couponHasUserCreateTime;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime couponHasUserUpdateTime;
+    private LocalDateTime modifiedAt;
 
 
 

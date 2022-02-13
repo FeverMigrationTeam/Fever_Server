@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Getter
@@ -19,16 +16,16 @@ import java.io.Serializable;
 public class CouponHasUserId implements Serializable {
 
     @Column(name = "coupon_has_user_idx")
-    private int couponHasUserIdx;
+    private Long couponHasUserIdx;
 
 //    @Column(name = "coupon_coupon_idx")
     @OneToOne
-    @JoinColumn(name = "coupon_idx")
+    @JoinColumn(name = "coupon_coupon_idx")
     private Coupon couponCouponIdx;
 
 //    @Column(name = "user_user_idx")
-    @OneToOne
-    @JoinColumn(name = "user_idx")
+    @ManyToOne
+    @JoinColumn(name = "user_user_idx")
     private Member userUserIdx;
 
 }
