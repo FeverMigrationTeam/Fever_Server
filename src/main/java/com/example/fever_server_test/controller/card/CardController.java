@@ -1,4 +1,4 @@
-package com.example.fever_server_test.controller;
+package com.example.fever_server_test.controller.card;
 
 
 import com.example.fever_server_test.service.CardService;

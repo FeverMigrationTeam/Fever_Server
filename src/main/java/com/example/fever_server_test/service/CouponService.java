@@ -48,7 +48,7 @@ public class CouponService {
 
 
         return new ResponseEntity(DataResponse.response(status.SUCCESS,
-                message.SUCCESS_SEARCH_STADIUM, allByUserUserIdx), HttpStatus.OK);
+                message.SUCCESS_SELECT_COUPON, allByUserUserIdx), HttpStatus.OK);
 
     }
 }
