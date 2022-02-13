@@ -1,4 +1,4 @@
-package com.example.fever_server_test.components;
+package com.example.fever_server_test.objects;
 
 
 public class UserId<T> {
@@ -9,12 +9,9 @@ public class UserId<T> {
     public UserId(String idType, T value) {
         this.idType = idType;
         this.value = value;
-        switch (idType) {
-            case "KAKAO": this.idName = "user_kakao_id"; break;
-            case "NAVER": this.idName = "user_naver_id"; break;
-            case "GOOGLE": this.idName = "user_google_id"; break;
-            default: this.idName = "user_idx"; break;
-        }
+        if (idType.equals("NORMAL")) {
+            this.idName = "user_idx";
+        } else { this.idName = "user_social_idx"; }
     }
 
     public String getColName() {

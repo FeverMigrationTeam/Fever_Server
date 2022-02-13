@@ -35,13 +35,16 @@ public class Equipment {
     private int equipmentServiceState;
 
     @Column(name = "equipment_state",columnDefinition = "TINYINT",length = 1)
-    private int euipmentState;
+    private int equipmentState;
+
+    @Column(name="equipment_host")
+    private String equipmentHost;
 
     @CreatedDate
-    private LocalDateTime euipmentCreateTime;
+    private LocalDateTime equipmentCreateTime;
 
     @LastModifiedDate
-    private LocalDateTime euipmentUpdateTime;
+    private LocalDateTime equipmentUpdateTime;
 
 
 

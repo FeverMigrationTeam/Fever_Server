@@ -24,7 +24,7 @@ public class VideoController {
     }
 
     @PostMapping("/start")
-    public ResponseEntity<NoDataResponse> startVideo(@RequestHeader("Authorization") String token, VideoStartReqDto videoStartReqDto) {
+    public ResponseEntity startVideo(@RequestHeader("Authorization") String token, VideoStartReqDto videoStartReqDto) throws Exception {
         return videoService.startVideo(token, videoStartReqDto);
     }
 }

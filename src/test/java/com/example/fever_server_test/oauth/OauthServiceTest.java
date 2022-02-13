@@ -1,6 +1,5 @@
 package com.example.fever_server_test.oauth;
 
-import com.example.fever_server_test.components.UserId;
 import com.example.fever_server_test.service.OauthService;
 import com.example.fever_server_test.social.SocialLoginType;
 import org.junit.jupiter.api.Test;

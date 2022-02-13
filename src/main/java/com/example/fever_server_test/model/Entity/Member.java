@@ -4,6 +4,7 @@ package com.example.fever_server_test.model.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Getter
+@Setter
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "user")
 public class Member { // 나중에 Spring Security 관련해서 User 라는 객체를 사용할 일이 생기기 때문에 User라는 엔티티 명을 사용하지 않음.
@@ -24,8 +26,8 @@ public class Member { // 나중에 Spring Security 관련해서 User 라는 객�
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userIdx;
 
-    @Column(name = "user_kakao_id")
-    private String userKakaoIdx;
+    @Column(name = "user_social_idx")
+    private String userSocialIdx;
 
     private String userName;
 
@@ -41,6 +43,6 @@ public class Member { // 나중에 Spring Security 관련해서 User 라는 객�
 
     /**
      * 테스트용*/
-    public Member(int idx, String userName, String userPhone, LocalDateTime userCreateTime, LocalDateTime userUpdateTime) {
+    public Member(int idx, String userName, String userPhone, String userSocialIdx) {
     }
 }

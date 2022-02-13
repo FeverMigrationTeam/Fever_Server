@@ -1,7 +1,6 @@
-package com.example.fever_server_test.components;
+package com.example.fever_server_test.objects;
 
 import com.example.fever_server_test.social.SocialLoginType;
-import com.example.fever_server_test.social.SocialOauth;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
