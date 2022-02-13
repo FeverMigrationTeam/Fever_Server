@@ -6,6 +6,7 @@ import com.example.fever_server_test.repository.VideoRepository;
 import com.example.fever_server_test.response.NoDataResponse;
 import com.example.fever_server_test.response.ResponseMessage;
 import com.example.fever_server_test.response.Status;
+import com.example.fever_server_test.social.SocialLoginType;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,14 @@ public class VideoService {
     }
 
     public ResponseEntity<NoDataResponse> startVideo(String token, VideoStartReqDto videoStartReqDto) {
-        String body = oauthService.requestSocialData(videoStartReqDto.getLoginType(), token);
-        JSONObject jsonObject = new JSONObject(body);
-        UserId userId = new UserId(videoStartReqDto.getLoginType().name(), jsonObject.get("id"));  // get("id")에 관해 추후 추상화 해야함
+        String loginType = videoStartReqDto.getLoginType();
+        UserId userId;
+        if (!loginType.equals("PHONE")) {
+            SocialLoginType socialLoginType = SocialLoginType.valueOf(loginType);
+            String body = oauthService.requestSocialData(socialLoginType, token);
+            JSONObject jsonObject = new JSONObject(body);
+            userId = new UserId(loginType, jsonObject.get("id"));
+        } else { userId = new UserId(loginType, 0); }
 
         // 현재는 소셜로그인만 존재한다 가정. 만일 userIdx도 사용한다 하면, Integer 전환 관련 구문 필요
 

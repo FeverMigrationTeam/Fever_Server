@@ -19,4 +19,8 @@ public class MemberTest {
         Assertions.assertThat(member.getUserIdx()).isEqualTo(100);
     }
 
+    @Test
+    void verifyUserTest() {
+
+    }
 }

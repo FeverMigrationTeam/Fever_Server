@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 public class VideoStartReqDto {
     int equipmentId;
-    SocialLoginType loginType;
+    String loginType;
 }
