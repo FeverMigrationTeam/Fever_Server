@@ -19,9 +19,10 @@ import java.time.LocalDateTime;
 @Table(name = "stadium")
 public class Stadium {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long stadiumId;
+    private Long stadiumIdx;
 
     private String stadiumName; // 구장 이름
 
@@ -34,7 +35,8 @@ public class Stadium {
 
     private String stadiumLatitude; // 위도
 
-    private String stadiumLongtitude; // 경도
+    @Column(name = "stadium_longitute")
+    private String stadiumLongititute; // 경도
 
     @Column(nullable = false, columnDefinition = "TINYINT", length = 1) // DBMS의 테이블과 매핑시 오류방지
     private int stadiumTroubleState; // 고장유무
@@ -43,9 +45,11 @@ public class Stadium {
 
     private String stadiumImg;
 
+    @Column(name = "stadium_create_time")
     @CreatedDate
     private LocalDateTime stadiumCreateTime;
 
+    @Column(name = "stadium_update_time")
     @LastModifiedDate
     private LocalDateTime stadiumUpdateTime;
 
