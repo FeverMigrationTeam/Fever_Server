@@ -16,7 +16,7 @@ public class CouponController {
 
     private final CouponService couponService;
 
-    /* 보유 이용권 : selectCoupon2 --Tony */
+    /* 보유 이용권 조회 : selectCoupon2 --Tony */
     @GetMapping("/{userId}")
     public ResponseEntity selectCoupon(@PathVariable Long userId){
         return couponService.selectCoupon(userId);
