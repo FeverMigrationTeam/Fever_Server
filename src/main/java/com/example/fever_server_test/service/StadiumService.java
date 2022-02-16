@@ -30,7 +30,7 @@ public class StadiumService {
     public final ModelMapper modelMapper;
 
     /* 모든 구장검색 : selectStadium */
-    public ResponseEntity selectStadium() {
+    public ResponseEntity selectAllStadiums() {
 
         List<StadiumRepDto> stadiumRepDtoList = stadiumRepository.findAll()
                 .stream()

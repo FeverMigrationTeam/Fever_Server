@@ -16,6 +16,7 @@ public class CardController {
 
     private final CardService cardService;
 
+    /* 모든 카드조회 : selectCard --Tony */
     @GetMapping("/{userId}")
     public ResponseEntity selectAllCards(@PathVariable Long userId) {
         return cardService.selectAllCards(userId);
