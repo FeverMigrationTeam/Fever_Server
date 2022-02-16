@@ -23,12 +23,12 @@ public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cardIdx;
+    private Long cardIdx;
 
 
     // 왜래키 : Card -> Member : 다대일 단방향 ( 임시 )
     @ManyToOne
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_user_idx")
     private Member member;
 
     private String cardCompanyName; // 카트회사 이름
@@ -36,10 +36,10 @@ public class Card {
     private String cardNumber; // 카드번호
 
     @CreatedDate
-    private LocalDateTime cardCreateTime;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime cardUpdateTime;
+    private LocalDateTime modifiedAt;
 
 
 }

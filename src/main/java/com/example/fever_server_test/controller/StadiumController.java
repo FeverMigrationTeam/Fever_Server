@@ -1,4 +1,4 @@
-package com.example.fever_server_test.controller.stadium;
+package com.example.fever_server_test.controller;
 
 
 import com.example.fever_server_test.service.StadiumService;
@@ -17,7 +17,7 @@ public class StadiumController {
 
     private final StadiumService stadiumService;
 
-    /* 모든 구장검색 : selectStadium --Tony */
+    /* 모든 구장조회 : selectStadium --Tony */
     @GetMapping()
     public ResponseEntity selectStadium(){
         return stadiumService.selectStadium();
