@@ -12,7 +12,7 @@ public class ResponseMessage {
     public String SUCCESS_SELECT_ALL_STADIUM = "모든 구장 검색 성공";
     public String SUCCESS_SEARCH_STADIUM = "구장 검색 성공";
     public String SUCCESS_SELECT_COUPON = "보유 이용권 조회 성공";
-    public String INVALID_ID = "유효하지 않은 유저입니다.";
+    public String INVALID_ID = "유효하지 않은 Id입니다.";
     public String NOT_ENTERED = "입력되지 않은 필수 항목이 있습니다.";
     public String DUPLICATED_NICKNAME = "사용할 수 없는 닉네임입니다.(중복)";
     public String NOT_VALID_ACCOUNT = "계정 정보를 불러올 수 없습니다."; // accountId validation

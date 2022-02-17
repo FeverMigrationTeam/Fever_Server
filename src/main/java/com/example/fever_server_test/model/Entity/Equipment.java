@@ -21,11 +21,11 @@ public class Equipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int equipmentIdx;
+    private Long equipmentIdx;
 
     // 왜래키 : equipment -> Stadium : 다대일
     @ManyToOne
-    @JoinColumn(name = "stadium_idx")
+    @JoinColumn(name = "equipment_stadium_idx")
     private Stadium stadium;
 
     private String equipmentQr;
