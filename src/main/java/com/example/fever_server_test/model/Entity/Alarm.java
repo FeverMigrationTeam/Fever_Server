@@ -22,7 +22,7 @@ public class Alarm { // pk 2개일 때 설정해줘야됨.
 
     @Id
     @Column(name = "alram_idx")
-    private int alarmIdx;
+    private Long alarmIdx;
 
     @Id
 //    @Column(name = "alram_user_idx")
@@ -30,14 +30,16 @@ public class Alarm { // pk 2개일 때 설정해줘야됨.
     @JoinColumn(name = "alram_user_idx",referencedColumnName = "user_idx")
     private Member member;
 
-    private String alramTitle;
+    @Column(name = "alram_title")
+    private String alarmTitle;
 
-    private String alramContent;
+    @Column(name = "alram_content")
+    private String alarmContent;
 
     @CreatedDate
-    private LocalDateTime alramCreatetime;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime alramUpdatetime;
+    private LocalDateTime modifiedAt;
 
 }
