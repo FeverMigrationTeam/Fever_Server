@@ -35,7 +35,7 @@ public class Video {
 
     // Video -> Member 다대일 단방향 매핑
     @ManyToOne
-    @JoinColumn(name = "user_user_idx")
+    @JoinColumn(name = "video_user_idx")
     private Member member;
 
     @CreatedDate

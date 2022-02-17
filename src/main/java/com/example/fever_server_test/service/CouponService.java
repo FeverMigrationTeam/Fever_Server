@@ -1,7 +1,6 @@
 package com.example.fever_server_test.service;
 
-import com.example.fever_server_test.dto.response.CouponHasUserRepDto;
-import com.example.fever_server_test.model.Entity.CouponHasUser;
+import com.example.fever_server_test.dto.response.CouponHasUserRespDto;
 import com.example.fever_server_test.model.Entity.Member;
 import com.example.fever_server_test.repository.CouponHasUserRepository;
 import com.example.fever_server_test.repository.CouponRepository;
@@ -38,9 +37,9 @@ public class CouponService {
             return new ResponseEntity(NoDataResponse.response(status.INVALID_ID, message.INVALID_ID), HttpStatus.OK);
 
         Member member = byId.get();
-        List<CouponHasUserRepDto> allByUserUserIdx = couponHasUserRepository.findAllByUserUserIdx(member)
+        List<CouponHasUserRespDto> allByUserUserIdx = couponHasUserRepository.findAllByUserUserIdx(member)
                 .stream()
-                .map(couponHasUser -> modelMapper.map(couponHasUser, CouponHasUserRepDto.class))
+                .map(couponHasUser -> modelMapper.map(couponHasUser, CouponHasUserRespDto.class))
                 .collect(Collectors.toList());
 
         if (allByUserUserIdx.isEmpty())

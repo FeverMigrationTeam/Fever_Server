@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CardRepDto {
+public class MyCardRespDto {
 
     private int cardIdx;
     private int userUserIdx;

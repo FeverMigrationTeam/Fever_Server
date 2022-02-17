@@ -1,7 +1,6 @@
 package com.example.fever_server_test.service;
 
-import com.example.fever_server_test.dto.response.CardRepDto;
-import com.example.fever_server_test.model.Entity.Card;
+import com.example.fever_server_test.dto.response.MyCardRespDto;
 import com.example.fever_server_test.model.Entity.Member;
 import com.example.fever_server_test.repository.CardRepository;
 import com.example.fever_server_test.repository.MemberRepository;
@@ -10,12 +9,10 @@ import com.example.fever_server_test.response.NoDataResponse;
 import com.example.fever_server_test.response.ResponseMessage;
 import com.example.fever_server_test.response.Status;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,9 +35,9 @@ public class CardService {
             return new ResponseEntity(NoDataResponse.response(status.INVALID_ID, message.INVALID_ID), HttpStatus.NOT_FOUND);
         Member member = byId.get();
 
-        List<CardRepDto> allByMember = cardRepository.findAllByMember(member)
+        List<MyCardRespDto> allByMember = cardRepository.findAllByMember(member)
                 .stream()
-                .map(card -> modelMapper.map(card, CardRepDto.class))
+                .map(card -> modelMapper.map(card, MyCardRespDto.class))
                 .collect(Collectors.toList());
 
         if (allByMember.isEmpty())

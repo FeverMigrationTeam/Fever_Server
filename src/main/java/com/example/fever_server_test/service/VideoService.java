@@ -1,6 +1,6 @@
 package com.example.fever_server_test.service;
 
-import com.example.fever_server_test.dto.response.ProjectionVideoAllRepDto;
+import com.example.fever_server_test.dto.response.MyAllVideoRespProjection;
 import com.example.fever_server_test.model.Entity.Member;
 import com.example.fever_server_test.repository.MemberRepository;
 import com.example.fever_server_test.repository.VideoRepository;
@@ -13,7 +13,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,9 +33,9 @@ public class VideoService {
         if(!byId.isPresent())
             return new ResponseEntity(NoDataResponse.response(status.INVALID_ID, message.INVALID_ID), HttpStatus.NOT_FOUND);
 
-        List<ProjectionVideoAllRepDto> allByMemberOrderByVideoIdxQuery = videoRepository.findAllByMemberOrderByVideoIdxQuery(byId.get().getUserIdx())
+        List<MyAllVideoRespProjection> allByMemberOrderByVideoIdxQuery = videoRepository.findAllByMemberOrderByVideoIdxQuery(byId.get().getUserIdx())
                 .stream()
-                .map(video -> modelMapper.map(video,ProjectionVideoAllRepDto.class))
+                .map(video -> modelMapper.map(video, MyAllVideoRespProjection.class))
                 .collect(Collectors.toList());
 
         if (allByMemberOrderByVideoIdxQuery.isEmpty())
