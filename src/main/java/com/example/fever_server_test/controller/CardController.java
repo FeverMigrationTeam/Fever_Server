@@ -3,7 +3,9 @@ package com.example.fever_server_test.controller;
 
 import com.example.fever_server_test.service.CardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,10 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/card")
 public class CardController {
 
-    private final CardService service;
+    private final CardService cardService;
 
-    @GetMapping("/test")
-    public void testApi(){
-        System.out.println("testAPI ---");
+    /* 모든 카드조회 : selectCard --Tony */
+    @GetMapping("/{userId}")
+    public ResponseEntity selectAllCards(@PathVariable Long userId) {
+        return cardService.selectAllCards(userId);
     }
+
+
 }

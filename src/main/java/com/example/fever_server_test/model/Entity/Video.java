@@ -21,16 +21,16 @@ public class Video {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long videoId;
+    private Long videoIdx;
 
     private String videoUrl;
 
     private String videoTitle;
 
-    // Video -> Stadium 다대일 단방향
+    // Video -> equipment 다대일 단방향
     @ManyToOne
-    @JoinColumn(name = "stadium_stadium_idx")
-    private Stadium stadium;
+    @JoinColumn(name = "video_equipment_idx")
+    private Equipment equipment;
 
 
     // Video -> Member 다대일 단방향 매핑
@@ -39,10 +39,10 @@ public class Video {
     private Member member;
 
     @CreatedDate
-    private LocalDateTime videoCreateTime;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime videoUpdateTime;
+    private LocalDateTime modifiedAt;
 
 
 

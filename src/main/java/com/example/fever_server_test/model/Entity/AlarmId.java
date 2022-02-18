@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class AlarmId implements Serializable { // 복합키를 가지고 있는 식별자 클래스 AlarmId
 
     @Column(name = "alram_idx")
-    private int alarmIdx;
+    private Long alarmIdx;
 
 //    @Column(name = "alram_user_idx")
 //    @ManyToOne  // Alarm -> User 다대일 단방향

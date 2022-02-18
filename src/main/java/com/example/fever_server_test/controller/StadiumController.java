@@ -2,7 +2,6 @@ package com.example.fever_server_test.controller;
 
 
 import com.example.fever_server_test.service.StadiumService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +16,10 @@ public class StadiumController {
 
     private final StadiumService stadiumService;
 
-    /* 모든 구장검색 : selectStadium --Tony */
+    /* 모든 구장조회 : selectStadium --Tony */
     @GetMapping()
-    public ResponseEntity selectStadium(){
-        return stadiumService.selectStadium();
+    public ResponseEntity selectAllStadiums(){
+        return stadiumService.selectAllStadiums();
     }
 
     /* 구장 검색 : searchStadium --Tony */
@@ -29,4 +28,5 @@ public class StadiumController {
         return stadiumService.searchStadium(stadiumName);
     }
 
+    /* */
 }
