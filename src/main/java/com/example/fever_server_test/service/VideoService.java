@@ -18,15 +18,19 @@ import com.example.fever_server_test.response.ResponseMessage;
 import com.example.fever_server_test.response.Status;
 import lombok.RequiredArgsConstructor;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -53,11 +57,12 @@ public class VideoService {
 
     public ResponseEntity startVideo(String token, VideoStartReqDto videoStartReqDto) throws Exception {
         String loginType = videoStartReqDto.getLoginType();
+        Long userId;
         try {
-            UserId userId = memberService.verifyUser(loginType, token);
+            userId = memberService.verifyUser(loginType, token);
         } catch (Exception e) {
             return new ResponseEntity(
-                    NoDataResponse.response(401, "UNAUTHORIZED"), HttpStatus.UNAUTHORIZED
+                NoDataResponse.response(401, "UNAUTHORIZED"), HttpStatus.UNAUTHORIZED
             );
         }
 
@@ -66,11 +71,30 @@ public class VideoService {
         Equipment equipment = equipmentRepository.findByEquipmentIdx(videoStartReqDto.getEquipmentId())
                 .orElseThrow(Exception::new);
         host = equipment.getEquipmentHost();
+        String url = host+"/record/{equipment_id}";
 
-        // userId.getValue(): body, equipmentId: param, [host]/record/{equipment_id}
+        // userId: body, equipmentId: param, [host]/record/{equipment_id} POST
+        RestTemplate restTemplate = new RestTemplate();
+        Map<String, Long> urlParams = new HashMap<>();
 
-        return new ResponseEntity(
-                NoDataResponse.response(200, "SUCCESS"), HttpStatus.OK);
+        // path variable 추가
+        urlParams.put("equipmentId", equipment.getEquipmentIdx());
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url);
+
+        // set header APPLICATION_JSON
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        // set JsonObject
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("user_id", userId);
+
+        // set request
+        HttpEntity<String> request = new HttpEntity<String>(jsonObject.toString(), headers);
+
+        return restTemplate.exchange(
+                builder.buildAndExpand(urlParams).toUri(), HttpMethod.POST, request, String.class
+        );
     }
 
     public ResponseEntity selectMyVideo ( Long userId){

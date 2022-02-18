@@ -23,7 +23,8 @@ public class MemberService {
     @Autowired
     private OauthService oauthService;
 
-    public UserId verifyUser(String loginType, String token) throws Exception {
+    // 2.18 수정: return값을 UserId가 아닌 Long type userIdx로 반환
+    public Long verifyUser(String loginType, String token) throws Exception {
         UserId userId;
         if (!loginType.equals("NORMAL")) {
             SocialLoginType socialLoginType = SocialLoginType.valueOf(loginType);
@@ -32,10 +33,10 @@ public class MemberService {
             userId = new UserId(loginType, jsonObject.get("id"));
             Member member = memberRepository.findByUserSocialIdx(userId.getValue())
                     .orElseThrow(Exception::new);
-            if (member.getUserSocialIdx().equals(userId.getValue())) return userId;
+            if (member.getUserSocialIdx().equals(userId.getValue())) return member.getUserIdx();
             throw new Exception("UNAUTHORIZED");
-        } else { userId = new UserId(loginType, 0); }
-
-        return userId;
+        }
+        // 요건 추후에 spring security로 자체 로그인 토큰 생성 시 사용할 예정
+        else { throw new Exception("Not verify userIdx yet"); }
     }
 }
