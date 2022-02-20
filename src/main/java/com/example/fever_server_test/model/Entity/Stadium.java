@@ -36,7 +36,7 @@ public class Stadium {
     private String stadiumLatitude; // 위도
 
     @Column(name = "stadium_longitute")
-    private String stadiumLongititute; // 경도
+    private String stadiumLongitute; // 경도
 
     @Column(nullable = false, columnDefinition = "TINYINT", length = 1) // DBMS의 테이블과 매핑시 오류방지
     private int stadiumTroubleState; // 고장유무
@@ -45,13 +45,11 @@ public class Stadium {
 
     private String stadiumImg;
 
-    @Column(name = "stadium_create_time")
     @CreatedDate
-    private LocalDateTime stadiumCreateTime;
+    private LocalDateTime createdAt;
 
-    @Column(name = "stadium_update_time")
     @LastModifiedDate
-    private LocalDateTime stadiumUpdateTime;
+    private LocalDateTime modifiedAt;
 
 
 }

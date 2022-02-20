@@ -1,7 +1,6 @@
 package com.example.fever_server_test.service;
 
-import com.example.fever_server_test.dto.response.AlarmRepDto;
-import com.example.fever_server_test.model.Entity.Alarm;
+import com.example.fever_server_test.dto.response.MyAlarmRespDto;
 import com.example.fever_server_test.model.Entity.Member;
 import com.example.fever_server_test.repository.AlarmRepository;
 import com.example.fever_server_test.repository.MemberRepository;
@@ -15,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,9 +35,9 @@ public class AlarmService {
             return new ResponseEntity(NoDataResponse.response(status.INVALID_ID, message.INVALID_ID), HttpStatus.NOT_FOUND);
 
         Member member = byId.get();
-        List<AlarmRepDto> allByMember = alarmRepository.findAllByMember(member)
+        List<MyAlarmRespDto> allByMember = alarmRepository.findAllByMember(member)
                 .stream()
-                .map(alarm -> modelMapper.map(alarm, AlarmRepDto.class))
+                .map(alarm -> modelMapper.map(alarm, MyAlarmRespDto.class))
                 .collect(Collectors.toList());
 
         if (allByMember.isEmpty())

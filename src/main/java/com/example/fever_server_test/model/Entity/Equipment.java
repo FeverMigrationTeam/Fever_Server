@@ -24,7 +24,7 @@ public class Equipment {
     private Long equipmentIdx;
 
     // 왜래키 : equipment -> Stadium : 다대일
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "equipment_stadium_idx")
     private Stadium stadium;
 
@@ -38,10 +38,10 @@ public class Equipment {
     private int euipmentState;
 
     @CreatedDate
-    private LocalDateTime euipmentCreateTime;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime euipmentUpdateTime;
+    private LocalDateTime modifiedAt;
 
 
 

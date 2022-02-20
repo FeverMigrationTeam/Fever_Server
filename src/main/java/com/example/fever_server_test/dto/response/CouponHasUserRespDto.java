@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CouponHasUserRepDto {
+public class CouponHasUserRespDto {
 
     private Long couponHasUserIdx;
     private int couponUsed; // 쿠폰 사용여부

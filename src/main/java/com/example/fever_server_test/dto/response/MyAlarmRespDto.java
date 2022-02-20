@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AlarmRepDto {
+public class MyAlarmRespDto {
 
     private Long alarmIdx;
     private String alarmTitle;
