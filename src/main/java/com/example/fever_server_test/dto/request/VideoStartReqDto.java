@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class VideoStartReqDto {
-    int equipmentId;
+    Long equipmentId;
     String loginType;
 }

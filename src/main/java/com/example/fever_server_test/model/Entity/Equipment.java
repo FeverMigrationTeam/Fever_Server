@@ -40,12 +40,13 @@ public class Equipment {
     @Column(name="equipment_host")
     private String equipmentHost;
 
+//    @CreatedDate
+//    private LocalDateTime equipmentCreateTime;
+
+//    @LastModifiedDate
+//    private LocalDateTime equipmentUpdateTime;
+
     @CreatedDate
-    private LocalDateTime equipmentCreateTime;
-
-    @LastModifiedDate
-    private LocalDateTime equipmentUpdateTime;
-
     private LocalDateTime createdAt;
 
     @LastModifiedDate

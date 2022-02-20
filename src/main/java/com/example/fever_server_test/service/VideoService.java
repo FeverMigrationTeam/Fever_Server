@@ -70,20 +70,22 @@ public class VideoService {
                 NoDataResponse.response(401, "UNAUTHORIZED"), HttpStatus.UNAUTHORIZED
             );
         }
-
         // equipment host 주소 가져오기
         String host;
-        Equipment equipment = equipmentRepository.findByEquipmentIdx(videoStartReqDto.getEquipmentId())
-                .orElseThrow(Exception::new);
+        Long equipmentId = videoStartReqDto.getEquipmentId();
+        Optional<Equipment> byEquipmentIdx = equipmentRepository.findById(equipmentId);
+        if (!byEquipmentIdx.isPresent())
+            return new ResponseEntity(NoDataResponse.response(404, "NOT FOUND"), HttpStatus.NOT_FOUND);
+        Equipment equipment = byEquipmentIdx.get();
         host = equipment.getEquipmentHost();
-        String url = host+"/record/{equipment_id}";
+        String url = "http://"+host+"/record/{equipmentId}";
 
         // userId: body, equipmentId: param, [host]/record/{equipment_id} POST
         RestTemplate restTemplate = new RestTemplate();
         Map<String, Long> urlParams = new HashMap<>();
 
         // path variable 추가
-        urlParams.put("equipmentId", equipment.getEquipmentIdx());
+        urlParams.put("equipmentId", equipmentId);
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url);
 
         // set header APPLICATION_JSON

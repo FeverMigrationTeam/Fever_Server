@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface EquipmentRepository extends JpaRepository<Equipment,Long> {
-    Optional<Equipment> findByEquipmentIdx(int equipmentIdx);
+    Optional<Equipment> findById(Long equipmentIdx);
+
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/video")
 public class VideoController {
+
     @Autowired
     private VideoService videoService;
 
@@ -29,7 +30,7 @@ public class VideoController {
     }
 
     @PostMapping("/start")
-    public ResponseEntity startVideo(@RequestHeader("Authorization") String token, VideoStartReqDto videoStartReqDto) throws Exception {
+    public ResponseEntity startVideo(@RequestHeader("Authorization") String token, @RequestBody VideoStartReqDto videoStartReqDto) throws Exception {
         return videoService.startVideo(token, videoStartReqDto);
     }
 
