@@ -45,13 +45,11 @@ public class Stadium {
 
     private String stadiumImg;
 
-    @Column(name = "stadium_create_time")
     @CreatedDate
-    private LocalDateTime stadiumCreateTime;
+    private LocalDateTime createdAt;
 
-    @Column(name = "stadium_update_time")
     @LastModifiedDate
-    private LocalDateTime stadiumUpdateTime;
+    private LocalDateTime modifiedAt;
 
 
 }

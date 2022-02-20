@@ -1,8 +1,7 @@
 package com.example.fever_server_test.service;
 
 
-import com.example.fever_server_test.dto.response.StadiumRepDto;
-import com.example.fever_server_test.model.Entity.Stadium;
+import com.example.fever_server_test.dto.response.StadiumRespDto;
 import com.example.fever_server_test.repository.StadiumRepository;
 import com.example.fever_server_test.response.DataResponse;
 import com.example.fever_server_test.response.NoDataResponse;
@@ -13,11 +12,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,9 +28,9 @@ public class StadiumService {
     /* 모든 구장검색 : selectStadium */
     public ResponseEntity selectAllStadiums() {
 
-        List<StadiumRepDto> stadiumRepDtoList = stadiumRepository.findAll()
+        List<StadiumRespDto> stadiumRepDtoList = stadiumRepository.findAll()
                 .stream()
-                .map(stadium -> modelMapper.map(stadium, StadiumRepDto.class))
+                .map(stadium -> modelMapper.map(stadium, StadiumRespDto.class))
                 .collect(Collectors.toList());
 
         if (stadiumRepDtoList.isEmpty()) // DB에 구장정보 x
@@ -47,9 +43,9 @@ public class StadiumService {
     /* 구장 검색 : searchStadium */
     public ResponseEntity searchStadium(String stadiumName) {
 
-        List<StadiumRepDto> stadiumRepDtoList = stadiumRepository.findByStadiumNameContaining(stadiumName)
+        List<StadiumRespDto> stadiumRepDtoList = stadiumRepository.findByStadiumNameContaining(stadiumName)
                 .stream()
-                .map(stadium -> modelMapper.map(stadium, StadiumRepDto.class))
+                .map(stadium -> modelMapper.map(stadium, StadiumRespDto.class))
                 .collect(Collectors.toList());
 
         if (stadiumRepDtoList.isEmpty()) // DB에 구장정보 x

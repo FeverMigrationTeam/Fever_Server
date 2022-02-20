@@ -18,6 +18,7 @@ public class Status {
     public int DUPLICATED_NICKNAME = 303;
     public int INVALID_ID = 304;
     public int EXISTED_NICKNAME = 305;
+    public int EXISTED_TITLE = 306;
     public int DB_INVALID_VALUE = 500;
     public int DB_NO_DATA = 501;
     public int EXPIRED_TOKEN = 502;
