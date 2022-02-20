@@ -9,6 +9,6 @@ import lombok.*;
 @AllArgsConstructor @ToString
 public class CompletePaymentsReqDto {
 
-    private int impUid;
-    private int merchantUid;
+    private String impUid;
+    private String merchantUid;
 }

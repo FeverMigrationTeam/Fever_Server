@@ -16,6 +16,7 @@ public class PaymentsController {
     private final PaymentsService paymentsService;
 
 
+    /* 아임포트 결제 : 결제번호(imp_uid) , 주문번호(merchant_uid) 추출하기 */
     @PostMapping("/complete")
     public ResponseEntity completePayments(@RequestBody CompletePaymentsReqDto completePaymentsReqDto) {
         return paymentsService.completePayments(completePaymentsReqDto);
