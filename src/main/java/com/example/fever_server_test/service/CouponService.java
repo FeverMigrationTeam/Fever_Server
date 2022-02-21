@@ -31,7 +31,7 @@ public class CouponService {
     private final MemberRepository memberRepository;
 
     /* 보유 이용권 : selectCoupon2 --Tony */
-    public ResponseEntity selectCoupon(@PathVariable Long userId) {
+    public ResponseEntity selectCoupon( Long userId) {
         Optional<Member> byId = memberRepository.findById(userId);
         if (!byId.isPresent())
             return new ResponseEntity(NoDataResponse.response(status.INVALID_ID, message.INVALID_ID), HttpStatus.OK);

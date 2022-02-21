@@ -24,6 +24,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'junit:junit:4.13.1'
 	implementation 'junit:junit:4.13.1'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13' // HttpClient 사용
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -40,6 +41,9 @@ dependencies {
 
 	// ModelMapper
 	implementation('org.modelmapper:modelmapper:0.7.8')
+
+	//JSONObject
+	implementation group: 'org.json', name: 'json', version: '20090211'
 
 
 
