@@ -11,6 +11,9 @@ import com.example.fever_server_test.dto.request.VideoUploadReqDto;
 import com.example.fever_server_test.dto.response.MyAllVideoRespProjection;
 import com.example.fever_server_test.model.Entity.Equipment;
 
+import com.example.fever_server_test.dto.request.VideoUploadReqDto;
+import com.example.fever_server_test.dto.response.MyAllVideoRespProjection;
+import com.example.fever_server_test.model.Entity.Equipment;
 import com.example.fever_server_test.model.Entity.Member;
 import com.example.fever_server_test.model.Entity.Video;
 import com.example.fever_server_test.repository.EquipmentRepository;
@@ -48,7 +51,9 @@ public class VideoService {
 
     private final EquipmentRepository equipmentRepository;
     private final MemberRepository memberRepository;
+    private final EquipmentRepository equipmentRepository;
     private final ModelMapper modelMapper;
+
 
     @Autowired
     private OauthService oauthService;
