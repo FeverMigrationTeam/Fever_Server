@@ -42,8 +42,8 @@ spring:
       client:
         registration:
           kakao:
-            client-id: f5c10aa7e91298cd339126823d81edc9 # 카카오 디벨로퍼 REST API 키   클라이언트 ID
-            redirect-uri: http://localhost:8080/oauth/kakao #"{baseUrl}/{action}/oauth2/code/{registrationId}" # http://localhost:8080/login/oauth2/code/kakao
+            client-id: bfde5086fc94e9b3c624fa64c5fb1afb # 카카오 디벨로퍼 REST API 키   클라이언트 ID
+            redirect-uri: http://localhost:8081/oauth/KAKAO/callback #"{baseUrl}/{action}/oauth2/code/{registrationId}" # http://localhost:8080/login/oauth2/code/kakao
             client-authentication-method: POST
             authorization-grant-type: authorization_code
             scope: profile_nickname, profile_image, account_email

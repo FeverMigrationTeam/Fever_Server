@@ -79,6 +79,11 @@ public class NaverOauth implements SocialOauth{
         return "네이버 로그인 요청 처리 실패";
     }
 
+    @Override
+    public String requestSocialData(String token) {
+        return "";
+    }
+
     public String generateState()
     {
         SecureRandom random = new SecureRandom();

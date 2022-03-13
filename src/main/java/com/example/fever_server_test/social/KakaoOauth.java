@@ -7,6 +7,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -19,13 +20,15 @@ import java.util.stream.Collectors;
 public class KakaoOauth implements SocialOauth {
 
     //    @Value("${sns.kakao.client.id}")
-    private String KAKAO_SNS_CLIENT_ID = "f5c10aa7e91298cd339126823d81edc9";
+    private String KAKAO_SNS_CLIENT_ID = "bfde5086fc94e9b3c624fa64c5fb1afb";
     //    @Value("${sns.kakao.client.secret}")
 //    private String KAKAO_SNS_CLIENT_SECRET;
 //    @Value("${sns.kakao.callback.url}")
-    private String KAKAO_SNS_CALLBACK_URL = "http://localhost:8080/auth/kakao/callback";
+    private String KAKAO_SNS_CALLBACK_URL = "http://localhost:8081/oauth/KAKAO/callback";
     private String KAKAO_SNS_BASE_URL = "https://kauth.kakao.com/oauth/authorize";
     private String KAKAO_SNS_TOKEN_BASE_URL = "https://kauth.kakao.com/oauth/token";
+
+    private final String KAKAO_SNS_USER_API_URL = "https://kapi.kakao.com/v2/user/me";
 
     @Override
     public String getOauthRedirectURL() {
@@ -75,5 +78,33 @@ public class KakaoOauth implements SocialOauth {
         }
 
         return "카카오 로그인 요청 처리 실패";
+    }
+
+    @Override
+    public String requestSocialData(String token) {
+        try {
+            String requestURL = KAKAO_SNS_USER_API_URL;
+            RestTemplate restTemplate = new RestTemplate(); // Spring HTTP 통신 템플릿, HTTP 요청 후 JSON, String .. 과 같은 응답을 받을 수 있는 템플릿 -> 주로 외부 api를 호출할 때 사용함.
+
+            //HttpHeader 오브젝트 생성
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8"); // 고정
+            headers.add("Authorization", token);
+
+            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
+
+            ResponseEntity<String> response = restTemplate.exchange(
+                    requestURL,
+                    HttpMethod.GET,
+                    request,
+                    String.class
+            );
+            if (response.getStatusCode() == HttpStatus.OK) {
+                return response.getBody(); // 각종 토큰과 만료시간 return
+            }
+            return "FAIL";
+        } catch (HttpClientErrorException e) {
+            return "UNAUTHORIZED";
+        }
     }
 }
